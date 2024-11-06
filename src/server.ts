@@ -11,8 +11,7 @@ import { ENV } from "./utils/envConfig";
 // Create main App server
 const server = createServer(app)
 
-const port = ENV.PORT
-server.listen(port, () => {
+server.listen(ENV.PORT, () => {
     MongoDbClient.on('connection', () => {
         console.log(AppString.DB.connection)
     })
