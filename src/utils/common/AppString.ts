@@ -13,4 +13,12 @@ const DB = {
     connection: `MONGODB CONNECTION ESTABLISHED SUCCESSFULLY`
 }
 
-export default { SERVER, APP, DB }
+// AUTH MESSAGES //
+const AUTH = {
+    // JWT auth
+    token_not_found: 'Auth Token not found',
+    token_miss_match: 'Invalid Auth Token',
+    token_expired: 'Auth Token Expired'
+}
+
+export default { SERVER, APP, DB, AUTH }
