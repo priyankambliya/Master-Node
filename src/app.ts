@@ -7,6 +7,7 @@ import morgan from 'morgan'
 import corsOptions from "./utils/corsOptions";
 import { createDirectoryIfNotExists } from "./utils/common";
 import { join } from "path";
+import routes from "./routes"
 
 export const app: Express = express()
 
@@ -30,7 +31,7 @@ createDirectoryIfNotExists(join(__dirname, "../uploads/"))
 app.use("/uploads", express.static(join(__dirname, "../uploads/")));
 
 // handle routes
-// app.use("/api", routes)
+app.use("/api", routes)
 
 // handle errors
 app.use(errorHandler.errorHandler)

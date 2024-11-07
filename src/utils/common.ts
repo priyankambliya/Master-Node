@@ -1,10 +1,8 @@
 import { Request, Response } from "express";
 import multer, { FileFilterCallback } from "multer";
 import path from "path";
-
-const fs = require("fs")
-const currentDate = new Date()
-const md5 = require("md5");
+import md5 from 'md5'
+import { existsSync, mkdirSync } from "fs";
 
 type DestinationCallback = (error: Error | null, destination: string) => void;
 type FileNameCallback = (error: Error | null, filename: string) => void;
@@ -52,8 +50,8 @@ export const fileFilter = (
 
 // FUNCTION FOR CREATE DIRECTORY:
 const createDirectoryIfNotExists = (directoryPath: any) => {
-    if (!fs.existsSync(directoryPath)) {
-        fs.mkdirSync(directoryPath, { recursive: true })
+    if (!existsSync(directoryPath)) {
+        mkdirSync(directoryPath, { recursive: true })
     }
 }
 
@@ -68,5 +66,5 @@ const use = (fn: any) => (req: Request, res: Response, next: any) => {
     Promise.resolve(fn(req, res, next)).catch(next)
 }
 
-export { createDirectoryIfNotExists, currentDate, throwError, use };
+export { createDirectoryIfNotExists, throwError, use };
 

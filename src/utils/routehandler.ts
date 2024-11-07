@@ -15,4 +15,4 @@ const apiRouteHandler = (routes: any, prefix: any, flag: boolean) => {
     return prefix
 }
 
-export { apiRouteHandler }
+export default apiRouteHandler

@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express"
-import { } from ''
 import { throwError } from "../utils/common"
 import AppString from "../utils/common/AppString"
-
+import { verify } from "jsonwebtoken"
+import { ENV } from "../utils/envConfig"
 
 const JwtAuth = () => async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.get("Authorization")
@@ -14,32 +14,18 @@ const JwtAuth = () => async (req: Request, res: Response, next: NextFunction) =>
     let decodedToken
 
     try {
-        decodedToken = verify(token, config.get("JWT_ACCESS_SECRET"))
+        // verify token here
+        decodedToken = verify(token, ENV.JWT_ACCESS_SECRET as string)
     } catch (error: any) {
-        throwError(appString.INVALID_ACCESS_TOKEN, 401)
+        return throwError(AppString.AUTH.token_miss_match, 401)
     }
 
     if (!decodedToken) {
-        throwError(appString.AUTH_TOKEN_MISSING, 401)
+        return throwError(AppString.AUTH.token_miss_match, 401)
     }
 
-    const user = await User.findOne({ _id: decodedToken.id }).lean().select('-password -updatedAt -__v')
-
-    if (!user) {
-        throwError(appString.AUTH_USER_MISSING, 401)
-    }
-
-    const role = user.role
-    const authorized = expectedRole.includes(role)
-
-    if (!authorized) {
-        throwError(appString.AUTH_USER_PERMISSION_DENIED, 401)
-    }
-
-    req.user = user;
+    // req.user = user;
     next()
 }
 
-export {
-    JwtAuth
-}
+export default JwtAuth

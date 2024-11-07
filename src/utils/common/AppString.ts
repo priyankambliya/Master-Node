@@ -18,7 +18,11 @@ const AUTH = {
     // JWT auth
     token_not_found: 'Auth Token not found',
     token_miss_match: 'Invalid Auth Token',
-    token_expired: 'Auth Token Expired'
+    token_expired: 'Auth Token Expired',
+
+
+    // USER auth
+    login: 'User login successfully',
 }
 
 export default { SERVER, APP, DB, AUTH }
