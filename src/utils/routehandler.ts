@@ -7,8 +7,8 @@ const apiRouteHandler = (routes: any, prefix: any, flag: boolean) => {
         const controller = route.handler
         const validation = route.validation ?? []
         let middlewares = route.middleware ?? []
-        if (validation.length > 0) middlewares.push(validation)
-        middlewares.push(use(controller))
+        if (validation.length > 0) middlewares.push(use(validation))
+        middlewares?.push(use(controller))
         prefix[method] && prefix[method](path, ...middlewares)
     })
 

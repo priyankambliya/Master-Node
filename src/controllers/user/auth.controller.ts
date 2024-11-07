@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { prepareNormalResponse } from "../../utils/responseHandler";
 import AppString from "../../utils/common/AppString";
+import { throwError } from "../../utils/common";
 
 // =============================== USER AUTH CONTROLLER =============================== //
 
@@ -12,6 +13,8 @@ function ping(req: Request, res: Response) {
 // Register User
 function registerUser(req: Request, res: Response) {
     // register logic here
+    let a = 1
+    if (a == 1) return throwError('Not Implemented', 501)
     return res.json(prepareNormalResponse(AppString.AUTH.login))
 }
 

@@ -7,6 +7,6 @@ const prepareSuccessResponse = (data: any, message: string) => {
 }
 
 // ERROR response
-const prepareErrorResponse = (error: string) => error
+const prepareErrorResponse = (error: string) => { return { error } }
 
 export { prepareNormalResponse, prepareSuccessResponse, prepareErrorResponse }

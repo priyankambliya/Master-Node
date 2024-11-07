@@ -56,11 +56,11 @@ const createDirectoryIfNotExists = (directoryPath: any) => {
 }
 
 // ERROR HANDLER MIDDLEWARE:
-const throwError = (message: any, code: number) => {
-    const error: any = new Error(message)
-    error.statusCode = code
-    throw error
-}
+const throwError = (message: string, statusCode: number = 500) => {
+    const error = new Error(message);
+    (error as any).statusCode = statusCode;
+    throw error;
+};
 
 const use = (fn: any) => (req: Request, res: Response, next: any) => {
     Promise.resolve(fn(req, res, next)).catch(next)

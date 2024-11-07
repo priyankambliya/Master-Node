@@ -1,4 +1,4 @@
-import express, { Express } from 'express'
+import express, { Express, NextFunction, Request, Response } from 'express'
 import AppString from './utils/common/AppString'
 import { ENV } from './utils/envConfig'
 import errorHandler from "./utils/errorHandler";
@@ -34,7 +34,9 @@ app.use("/uploads", express.static(join(__dirname, "../uploads/")));
 app.use("/api", routes)
 
 // handle errors
-app.use(errorHandler.errorHandler)
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+    errorHandler.errorHandler(error, req, res, next);
+})
 
 app.listen(() => {
     console.log(AppString.APP.connection_established + ENV.PORT)
