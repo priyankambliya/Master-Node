@@ -1,3 +1,7 @@
+const COMMON = {
+    something_went_wrong: 'Something went wrong.Please try again later.'
+}
+
 // SERVER MESSAGES //
 const SERVER = {
     connection_established: 'SERVER CONNECTION ESTABLISHED SUCCESSFULLY'
@@ -13,4 +17,16 @@ const DB = {
     connection: `MONGODB CONNECTION ESTABLISHED SUCCESSFULLY`
 }
 
-export default { SERVER, APP, DB }
+// AUTH MESSAGES //
+const AUTH = {
+    // JWT auth
+    token_not_found: 'Auth Token not found',
+    token_miss_match: 'Invalid Auth Token',
+    token_expired: 'Auth Token Expired',
+
+
+    // USER auth
+    login: 'User login successfully',
+}
+
+export default { SERVER, APP, DB, AUTH, COMMON }
