@@ -7,7 +7,7 @@ import { throwError } from "../../utils/common";
 
 // Auth Ping
 function ping(req: Request, res: Response) {
-    return res.json(prepareNormalResponse('Auth pong..'))
+    return res.json(prepareNormalResponse(`Auth pong..${process.pid}`,))
 }
 
 // Register User

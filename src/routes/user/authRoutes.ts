@@ -17,7 +17,7 @@ const authRoutesArray = [
         path: '/register',
         handler: authController.registerUser,
         validation: validation('userRegisterValidator'),
-        middleware: [JwtAuth]
+        middleware: [JwtAuth(1)]
     },
     {
         method: 'post',

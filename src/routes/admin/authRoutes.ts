@@ -15,14 +15,12 @@ const authRoutesArray = [
         path: '/register',
         handler: authController.registerUser,
         // validation: validation('registerValidator'),
-        middleware: []
     },
     {
         method: 'post',
         path: '/login',
         handler: authController.loginUser,
         // validation: validation('loginValidator'),
-        middleware: []
     }
 ]
 

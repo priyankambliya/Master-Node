@@ -1,3 +1,7 @@
+const COMMON = {
+    something_went_wrong: 'Something went wrong.Please try again later.'
+}
+
 // SERVER MESSAGES //
 const SERVER = {
     connection_established: 'SERVER CONNECTION ESTABLISHED SUCCESSFULLY'
@@ -25,4 +29,4 @@ const AUTH = {
     login: 'User login successfully',
 }
 
-export default { SERVER, APP, DB, AUTH }
+export default { SERVER, APP, DB, AUTH, COMMON }
