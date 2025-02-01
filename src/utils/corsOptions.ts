@@ -1,5 +1,5 @@
 const allowedOrigins = [
-  "http://localhost:7777",
+  "http://localhost:1001",
 ];
 
 const corsOptions = {
